@@ -1,6 +1,6 @@
 <script setup>
-import FooterComponent from "../public/components/footer.component.vue";
-import NavbarComponent from "../public/components/navbar.component.vue"
+import FooterComponent from "../../public/components/footer.component.vue";
+import NavbarComponent from "../../public/components/navbar.component.vue"
 import Button from "primevue/button";
 </script>
 
