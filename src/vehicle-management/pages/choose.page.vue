@@ -14,7 +14,6 @@ import VehicleCardComponent from '../../vehicle-management/components/vehicle-ca
       <VehicleCardComponent :vehicle='new Vehicle("Scooter", "https://solden.cl/cdn/shop/products/adult-scooter-one-nl-205-black-charcoal-grey_600x.jpg?v=1657814724")' />
       <VehicleCardComponent :vehicle='new Vehicle("Bicicleta", "https://th.bing.com/th/id/R.ce8c4f3d0b90ee02e50e39e4f219cc3c?rik=umZ8Tmh6Ox02Kw&pid=ImgRaw&r=0")' />
     </div>
-
     </section>
     </main>
   <Footer/>
