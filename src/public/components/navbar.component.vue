@@ -16,9 +16,7 @@ import LogoComponent from './logo.component.vue'
       <div class='flex items-center gap-2'>
         <ul class='hidden md:flex gap-x-5'>
           <li v-for='option in navOptions' :key="option" class='hover:opacity-75 transition'>
-            <a :href='`${option.toLowerCase()}`'>
-              {{ option }}
-            </a>
+            <RouterLink :to="`/${option.toLowerCase()}`" class="text-white">{{ option }}</RouterLink>
           </li>
         </ul>
       </div>
