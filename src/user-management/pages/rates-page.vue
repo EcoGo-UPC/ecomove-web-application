@@ -13,7 +13,7 @@ import Button from "primevue/button";
         <template #title>
           <!--<img alt="user-image" :src="user.image" class="rounded-full max-w-60">-->
           <div class="flex flex-row gap-2.5 items-center">
-          <img alt="user image" src="../user-management/assets/perfil-hombre-vivo.png" class="rounded-full" width="60">
+          <img alt="user image" src="../user-management/images/perfil-hombre-vivo.png" class="rounded-full" width="60">
           <h1 class="align-middle">Marcos Otamendi</h1>
           </div>
         </template>
