@@ -1,4 +1,5 @@
 <script setup>
+
 import NavBar from '../../public/components/navbar.component.vue'
 import Footer from '../../public/components/footer.component.vue'
 import {Vehicle} from "../models/vehicle.identity.js";
@@ -20,5 +21,4 @@ import VehicleCardComponent from '../../vehicle-management/components/vehicle-ca
 </template>
 
 <style scoped>
-
 </style>
