@@ -16,8 +16,8 @@ import LogoComponent from './logo.component.vue'
     <LogoComponent />
     <span class='text-sm'>2024 EcoMove</span>
     <div class='flex flex-col md:flex-row gap-4'>
-      <a href='#' class='underline hover:opacity-75 transition text-center'>Información legal</a>
-      <a href='#' class='underline hover:opacity-75 transition text-center'>Política de privacidad</a>
+      <a href='https://ecogo-upc.github.io/ecomove-landing-page/terms.html' class='underline hover:opacity-75 transition text-center'>Términos y condiciones</a>
+      <a href='https://ecogo-upc.github.io/ecomove-landing-page/privacy.html' class='underline hover:opacity-75 transition text-center'>Política de privacidad</a>
     </div>
   </footer>
 </template>

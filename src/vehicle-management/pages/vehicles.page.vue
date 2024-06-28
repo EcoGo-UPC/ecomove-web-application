@@ -5,18 +5,20 @@ import VehicleCardComponent from '../../vehicle-management/components/vehicle-ca
 import { Vehicle } from '../../vehicle-management/models/vehicle.identity';
 import { ref } from "vue";
 import axios from "axios";
+import { EcoVehiclesService } from '../../shared/services/ecovehicles.service';
 
 let vehicles = ref([]);
 
 const getVehicles = async () => {
-  try {
-    const response = await axios.get('https://ecomove-fake-api.onrender.com/ecovehicles');
-    for(let vehicle of response.data){
-      vehicles.value.push(new Vehicle(vehicle.id, vehicle.type, vehicle.model, vehicle.batteryLevel, vehicle.location, vehicle.status, vehicle.imageURL));
+
+    const vehiclesService =  new EcoVehiclesService();
+    const response = await vehiclesService.getVehicles().then(response => {
+      return response.data;
+    }).catch(error => console.error(error));
+
+    for(let vehicle of response){
+      vehicles.value.push(new Vehicle(vehicle.id, vehicle.vehicleTypeId, vehicle.model, vehicle.batteryLevel, vehicle.location, vehicle.status, vehicle.imageUrl));
     }
-  } catch (error) {
-    console.error(error);
-  }
 }
 
 getVehicles();
@@ -25,15 +27,11 @@ getVehicles();
 
 <template>
   <NavbarComponent />
-  <main class='mx-auto mt-20 !bg-primary-200 pt-20 w-full'>
-    <section id='vehicles' class='flex flex-col items-center justify-center min-h-[70dvh] gap-10 w-full'>
-      <h1 class='text-2xl md:text-4xl xl:text-7xl font-medium text-black text-center'>CONTAMOS CON VARIEDAD DE VEHÍCULOS</h1>
+  <main class='mx-auto mt-20 !bg-primary-200 w-full'>
+    <section id='vehicles' class='flex flex-col items-center justify-center min-h-[70dvh] gap-10 w-full py-10'>
+      <h1 class='text-2xl md:text-4xl xl:text-7xl font-medium text-black text-center'>ENCUENTRA TU VEHÍCULO FAVORITO EN NUESTRO CATÁLOGO</h1>
       <div class='!grid grid-cols-2 md:grid-cols-4 gap-10'>
         <VehicleCardComponent v-for="vehicle in vehicles" :vehicle='vehicle' />
-      </div>
-      <div class='flex flex-col md:flex-row gap-10'>
-        <Button label='Ver vehículos cercanos' class='bg-primary-800 px-5 py-3 border border-none rounded-xl text-white' />
-        <Button label='Reseñas y calificaciones' class='bg-primary-800 px-5 py-3 border border-none rounded-xl text-white' />
       </div>
     </section>
   </main>
