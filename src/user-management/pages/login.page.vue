@@ -62,6 +62,7 @@ const signIn = async () => {
       </div>      
     </form>
     <Button label='Ingresa ahora' class="!bg-primary-800 p-4 text-white w-[75%] md:w-[50%] xl:w-[35%]" @click="signIn"/>
+    <RouterLink to="/register" class="text-primary-800 pt-2">¿No tienes cuenta? Regístrate</RouterLink>
   </main>
   <FooterComponent />
 </template>
