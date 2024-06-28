@@ -16,6 +16,8 @@ import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import ColumnGroup from 'primevue/columngroup';   
 import Row from 'primevue/row';  
+import ToggleButton from 'primevue/togglebutton';
+import InputSwitch from "primevue/inputswitch";
 
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
@@ -38,6 +40,8 @@ app.component('DataTable', DataTable);
 app.component('Column', Column); 
 app.component('ColumnGroup', ColumnGroup); 
 app.component('Row', Row);
+app.component('ToggleButton', ToggleButton);
+app.component('InputSwitch', InputSwitch);
 
 app.use(VueGoogleMaps, {
   load: {

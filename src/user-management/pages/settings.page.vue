@@ -8,6 +8,7 @@ let user = ref({});
 
 const signOut = () => {
   localStorage.removeItem("user");
+  localStorage.removeItem("auth")
   localStorage.removeItem("reservation");
   localStorage.removeItem("vehicle");
 };
@@ -26,12 +27,12 @@ getUser();
     class="!bg-primary-200 flex justify-center flex-col items-center px-6 py-20 gap-10"
   >
     <div
-      class="flex flex-col-reverse sm:flex-row gap-6 justify-center items-center"
+      class="flex flex-col-reverse sm:flex-row gap-6 justify-center py-10 items-center"
     >
       <h1
         class="!text-3xl md:!text-4xl lg:!text-5xl !font-bold text-center md:text-start"
       >
-        HOLA, {{ user.firstname }}
+        HOLA, {{ user.fullName }}
       </h1>
       <RouterLink to="/login"
         aria-label="logout"
@@ -65,7 +66,7 @@ getUser();
         <div
           class="border-black border-4 rounded-xl w-full h-full !bg-primary-400 flex flex-col justify-center items-center gap-7"
         >
-          <img alt="modify icon" src="/images/modify.png" />
+          <img alt="modify icon" src="/images/others.png" />
           <span class="text-3xl !font-kumbh-sans !font-semibold"
             >Modificar</span
           >
@@ -81,7 +82,7 @@ getUser();
           >
         </div>
       </RouterLink>
-      <a aria-label="preferences link" class="w-80 h-96">
+      <RouterLink to="/preferencias" aria-label="preferences link" class="w-80 h-96">
         <div
           class="border-black border-4 rounded-xl w-full h-full !bg-primary-400 flex flex-col justify-center items-center gap-7"
         >
@@ -93,11 +94,14 @@ getUser();
             >Preferencias</span
           >
         </div>
-      </a>
+      </RouterLink>
     </div>
     <div class="flex flex-col md:flex-row justify-end gap-12">
       <RouterLink to="/soporte" class="!bg-primary-800 px-8 py-2 text-white rounded-md">Soporte</RouterLink>
       <RouterLink to="/alertas" class="!bg-primary-800 px-8 py-2 text-white rounded-md">Alertas</RouterLink>
+    </div>
+    <div class="flex flex-col md:flex-row justify-end gap-12">
+      <RouterLink to="/reportar" class="!bg-primary-800 px-8 py-2 text-white rounded-md">Reporta tu problema</RouterLink>
     </div>
   </main>
   <FooterComponent />

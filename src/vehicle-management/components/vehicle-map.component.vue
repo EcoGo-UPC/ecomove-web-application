@@ -27,6 +27,7 @@
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router'; 
 import axios from 'axios';
+import { EcoVehiclesService } from '../../shared/services/ecovehicles.service';
 export default {
   setup() {
     let center = ref({ lat: 0, lng: 0 });
@@ -39,18 +40,20 @@ export default {
       });
       console.log(marker[0]);
       localStorage.setItem('vehicle', JSON.stringify(marker[0]));
-      router.push('/reserva')
+      if(localStorage.getItem('reservation')) {
+        router.push('/reserva');
+      }
     }
 
     onMounted( async () => {
       try {
-        const response = await axios.get('https://ecomove-fake-api.onrender.com/ecovehicles');
+        const vehiclesService = new EcoVehiclesService();
+        const response = await vehiclesService.getAvailableVehicles();
         vehicles.value = 
         response.data
-        .filter(vehicle => vehicle.status === 'disponible')
         .map(vehicle => ({
           id: vehicle.id,
-          type: vehicle.type,
+          type: vehicle.vehicleTypeId,
           model: vehicle.model,
           batteryLevel: vehicle.batteryLevel,
           location: {
