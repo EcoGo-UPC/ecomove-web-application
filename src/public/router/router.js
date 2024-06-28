@@ -13,23 +13,12 @@ import AlertsPage from '../../customer-support/pages/alerts.page.vue';
 import SupportPage from '../../customer-support/pages/support.page.vue';
 import MethodsPage from '../../payment/pages/methods.page.vue';
 import HistoryPage from '../../booking-reservation/pages/history.page.vue';
-
-import RatesPage from "../../user-management/pages/rates-page.vue";
-import RatesvPage from "../../user-management/pages/ratesv-page.vue";
-import ProfilePage from "../../user-management/pages/profile.page.vue";
-import ConfirmationRegisterPage from "../../user-management/pages/confirmation-register.page.vue";
-
-import InputCard from '../../payment/pages/input-card.page.vue';
-import PaymentMethodPage from '../../payment/pages/payment-method.page.vue';
-import SubscriptionPage from "../../payment/pages/subscription.page.vue";
-import ConfirmationCardPage from "../../payment/pages/confirmation-card.page.vue";
-
+import UpReviewsPage from "../../user-management/pages/up-reviews.page.vue";
+import EnterCardPage from "../../payment/pages/enter-card.page.vue";
+import ReportPage from "../../customer-support/pages/report.page.vue";
+import PreferencesPage from "../../user-management/pages/preferences.page.vue";
 
 const routes = [
-<<<<<<< HEAD
-  { path: '/', component: HomePage },
-  { path: '/vehículos', component: VehiclesPage },
-=======
   { path: '/', redirect: '/inicio'},
   { path: '/inicio', component: HomePage },
   { path: '/login', component: LoginPage },
@@ -44,19 +33,15 @@ const routes = [
   { path: '/alertas', component: AlertsPage},
   { path: '/soporte', component: SupportPage },
   { path: '/metodos', component: MethodsPage },
-  { path: '/historial', component: HistoryPage}
+  { path: '/historial', component: HistoryPage},
+  { path: '/datos-tarjeta', component: EnterCardPage},
+  { path: '/historial', component: HistoryPage},
+  { path: '/reportar', component: ReportPage},
+  { path: '/preferencias', component: PreferencesPage}
 ]
->>>>>>> main
 
-  { path:'/inputCard', component: InputCard },
-  { path:'/paymentmethod', component: PaymentMethodPage },
-  { path: '/subscriptions', component: SubscriptionPage },
-  { path: '/confirmationCard', component: ConfirmationCardPage}
-
-]
 const router = createRouter({
   history: createWebHistory(),
   routes,
 })
 export default router
-

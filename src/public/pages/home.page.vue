@@ -6,22 +6,24 @@ import { Vehicle } from '../../vehicle-management/models/vehicle.identity';
 import { ref } from "vue";
 import axios from "axios";
 import { useRouter } from "vue-router";
+import { EcoVehiclesService } from '../../shared/services/ecovehicles.service';
 
-const start = ref();
-const end = ref();
-const location = ref();
+
 let router = useRouter();
 let vehicles = ref([]);
 
 const getVehicles = async () => {
-  try {
-    const response = await axios.get('https://ecomove-fake-api.onrender.com/ecovehicles');
-    for(let i = 0; i < 4; i++) {
-      vehicles.value.push(new Vehicle(response.data[i].id, response.data[i].type, response.data[i].model, response.data[i].batteryLevel, response.data[i].location, response.data[i].status, response.data[i].imageURL));
-    }
-  } catch (error) {
-    console.error(error);
+
+  const vehiclesService = new EcoVehiclesService();
+  const response = await vehiclesService.getVehicles().then(response => {
+    return response.data;
+  }).catch(error => console.error(error));
+  console.log(response)
+
+  for(let i = 0; i<=3; i++) {
+    vehicles.value.push(new Vehicle(response[i].id, response[i].vehicleTypeId, response[i].model, response[i].batteryLevel, response[i].location, response[i].status, response[i].imageUrl));
   }
+
 }
 
 const verifyUser = () => {
@@ -46,9 +48,7 @@ getVehicles();
     <section id='vehicles' class='flex flex-col items-center justify-center min-h-[70dvh] gap-10 w-full'>
       <h2 class='text-4xl font-bold text-black text-center'>Contamos con variedad de vehículos</h2>
       <div class='flex flex-col md:flex-row gap-10'>
-
         <VehicleCardComponent v-for="vehicle in vehicles" :vehicle='vehicle' />
-        
       </div>
       <div class='flex flex-col md:flex-row gap-10'>
         <RouterLink to="/vehiculos-disponibles" class='!bg-primary-800 px-5 py-3 border border-none rounded-xl text-white !font-semibold'
